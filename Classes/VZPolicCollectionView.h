@@ -27,6 +27,7 @@
 ///ширина полисов
 /// @defualt = 150
 @property (nonatomic, assign) CGFloat sectionWidth;
+@property (nonatomic, assign, getter = isCenterContent) BOOL centerContent;
 
 - (void)reloadData;
 - (id)dequeCellWithIdentifier:(NSString *)identifier;

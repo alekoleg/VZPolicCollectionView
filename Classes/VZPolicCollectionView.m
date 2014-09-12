@@ -47,6 +47,7 @@
     _nibMap = [NSMutableDictionary dictionary];
     _visibleCells = [NSMutableSet set];
     _sectionWidth = 150;
+    self.centerContent = NO;
     [self setupScrollView];
 }
 
@@ -103,6 +104,10 @@
     [self registerNib:nib forIndentifier:identifier];
 }
 
+- (void)setCenterContent:(BOOL)centerContent {
+    _centerContent = centerContent;
+    [self updateScrollViewContentSize];
+}
 #pragma mark - Helpers -
 
 - (CGFloat)xOriginForIntex:(NSInteger)index {
@@ -124,7 +129,7 @@
     _scrollView.contentSize = CGSizeMake(_countOfCells * _sectionWidth, _scrollView.contentSize.height);
     float offsetX = (_scrollView.frame.size.width - _scrollView.contentSize.width) / 2 ;
     offsetX = MAX(offsetX, 0);
-    _scrollView.contentInset = UIEdgeInsetsMake(0, offsetX, 0, 0);
+    _scrollView.contentInset = UIEdgeInsetsMake(0, offsetX * _centerContent, 0, 0);
 }
 
 - (void)addCellForReuse:(VZPolicCollectionCell *)cell {

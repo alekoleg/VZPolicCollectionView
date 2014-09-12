@@ -25,4 +25,9 @@ NSString * const VZPolicCollectionCellIdentifier = @"VZPolicCollectionCellIdenti
     [super awakeFromNib];
     _reuseIdentifier = VZPolicCollectionCellIdentifier;
 }
+
+- (void)prepareForReuse {
+    
+}
+
 @end

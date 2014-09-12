@@ -83,6 +83,7 @@
 - (id)dequeCellWithIdentifier:(NSString *)identifier {
     NSMutableArray *array = _forReuseDic[identifier];
     VZPolicCollectionCell *cell = [array lastObject];
+    [cell prepareForReuse];
     [array removeLastObject];
     if (!cell) {
         UINib *nib = _nibMap[identifier];

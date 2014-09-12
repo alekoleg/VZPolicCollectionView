@@ -23,6 +23,8 @@
 		B30D5A0B19B8B85200EC7E19 /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D5A0A19B8B85200EC7E19 /* ExampleTests.m */; };
 		B30D5A1719B8BA4200EC7E19 /* VZPolicCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D5A1619B8BA4200EC7E19 /* VZPolicCollectionView.m */; };
 		B30D5A1A19B8BADD00EC7E19 /* VZPolicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B30D5A1919B8BADD00EC7E19 /* VZPolicCollectionCell.m */; };
+		B371235F19C2D73E0008A913 /* VZTestNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = B371235E19C2D73E0008A913 /* VZTestNibView.m */; };
+		B371236119C2D7560008A913 /* VZTestNibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B371236019C2D7560008A913 /* VZTestNibView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,9 @@
 		B30D5A1619B8BA4200EC7E19 /* VZPolicCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZPolicCollectionView.m; sourceTree = "<group>"; };
 		B30D5A1819B8BADD00EC7E19 /* VZPolicCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VZPolicCollectionCell.h; sourceTree = "<group>"; };
 		B30D5A1919B8BADD00EC7E19 /* VZPolicCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZPolicCollectionCell.m; sourceTree = "<group>"; };
+		B371235D19C2D73E0008A913 /* VZTestNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VZTestNibView.h; sourceTree = "<group>"; };
+		B371235E19C2D73E0008A913 /* VZTestNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZTestNibView.m; sourceTree = "<group>"; };
+		B371236019C2D7560008A913 /* VZTestNibView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VZTestNibView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,9 @@
 				B30D59F119B8B85200EC7E19 /* Main.storyboard */,
 				B30D59F419B8B85200EC7E19 /* VZViewController.h */,
 				B30D59F519B8B85200EC7E19 /* VZViewController.m */,
+				B371235D19C2D73E0008A913 /* VZTestNibView.h */,
+				B371235E19C2D73E0008A913 /* VZTestNibView.m */,
+				B371236019C2D7560008A913 /* VZTestNibView.xib */,
 				B30D59F719B8B85200EC7E19 /* Images.xcassets */,
 				B30D59E619B8B85200EC7E19 /* Supporting Files */,
 			);
@@ -250,6 +258,7 @@
 			files = (
 				B30D59F819B8B85200EC7E19 /* Images.xcassets in Resources */,
 				B30D59EA19B8B85200EC7E19 /* InfoPlist.strings in Resources */,
+				B371236119C2D7560008A913 /* VZTestNibView.xib in Resources */,
 				B30D59F319B8B85200EC7E19 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B371235F19C2D73E0008A913 /* VZTestNibView.m in Sources */,
 				B30D5A1719B8BA4200EC7E19 /* VZPolicCollectionView.m in Sources */,
 				B30D59F619B8B85200EC7E19 /* VZViewController.m in Sources */,
 				B30D59F019B8B85200EC7E19 /* VZAppDelegate.m in Sources */,
@@ -478,6 +488,7 @@
 				B30D5A1019B8B85200EC7E19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B30D5A1119B8B85200EC7E19 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -486,6 +497,7 @@
 				B30D5A1319B8B85200EC7E19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -13,6 +13,7 @@
     NSMutableDictionary *_forReuseDic;
     NSMutableSet *_visibleCells;
     NSInteger _countOfCells;
+    NSMutableDictionary *_nibMap;
 }
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -43,6 +44,7 @@
 
 - (void)setup {
     _forReuseDic = [NSMutableDictionary dictionary];
+    _nibMap = [NSMutableDictionary dictionary];
     _visibleCells = [NSMutableSet set];
     _sectionWidth = 150;
     [self setupScrollView];
@@ -77,10 +79,14 @@
     }
 }
 
-- (VZPolicCollectionCell *)dequeCellWithIdentifier:(NSString *)identifier {
+- (id)dequeCellWithIdentifier:(NSString *)identifier {
     NSMutableArray *array = _forReuseDic[identifier];
     VZPolicCollectionCell *cell = [array lastObject];
     [array removeLastObject];
+    if (!cell) {
+        UINib *nib = _nibMap[identifier];
+        cell = [[nib instantiateWithOwner:nil options:nil] firstObject];
+    }
     return cell;
 }
 
@@ -88,6 +94,14 @@
     [self.scrollView setContentOffset:CGPointMake(-self.scrollView.contentInset.left, self.scrollView.contentOffset.y) animated:animated];
 }
 
+- (void)registerNib:(UINib *)nib forIndentifier:(NSString *)identifier {
+    _nibMap[identifier] = nib;
+}
+
+- (void)registerClass:(NSString *)className forIndentifier:(NSString *)identifier {
+    UINib *nib = [UINib nibWithNibName:className bundle:nil];
+    [self registerNib:nib forIndentifier:identifier];
+}
 
 #pragma mark - Helpers -
 

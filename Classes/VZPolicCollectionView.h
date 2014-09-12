@@ -29,8 +29,12 @@
 @property (nonatomic, assign) CGFloat sectionWidth;
 
 - (void)reloadData;
-- (VZPolicCollectionCell *)dequeCellWithIdentifier:(NSString *)identifier;
+- (id)dequeCellWithIdentifier:(NSString *)identifier;
 
 - (void)scrollToRightAnimated:(BOOL)animated;
+
+- (void)registerNib:(UINib *)nib forIndentifier:(NSString *)identifier;
+- (void)registerClass:(NSString *)className forIndentifier:(NSString *)identifier;
+
 @end
 

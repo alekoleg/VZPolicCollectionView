@@ -8,6 +8,8 @@
 
 #import "VZPolicCollectionCell.h"
 
+NSString * const VZPolicCollectionCellIdentifier = @"VZPolicCollectionCellIdentifier";
+
 @implementation VZPolicCollectionCell
 
 - (id)initWithFrame:(CGRect)frame reuseIdenstifier:(NSString *)identifier
@@ -19,4 +21,8 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    _reuseIdentifier = VZPolicCollectionCellIdentifier;
+}
 @end

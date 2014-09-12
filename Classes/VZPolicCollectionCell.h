@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const VZPolicCollectionCellIdentifier;
+
 @interface VZPolicCollectionCell : UIView
 
-@property (nonatomic, copy, readonly) NSString *reuseIdentifier;
+@property (nonatomic, copy) NSString *reuseIdentifier;
 
 - (id)initWithFrame:(CGRect)frame reuseIdenstifier:(NSString *)identifier;
 

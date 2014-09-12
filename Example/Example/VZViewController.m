@@ -25,8 +25,12 @@
     VZPolicCollectionView *view = [[VZPolicCollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(self.view.bounds) - 100, self.view.frame.size.width, 200)];
     view.delegate = self;
     view.sectionWidth = 100;
+    UINib *nib = [UINib nibWithNibName:@"VZTestNibView" bundle:nil];
+    [view registerNib:nib forIndentifier:@"cellID"];
     [view reloadData];
     [self.view addSubview:view];
+    
+
 }
 
 
@@ -39,9 +43,9 @@
     NSString * const cellID = @"cellID";
     
     VZPolicCollectionCell *cell = [view dequeCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[VZPolicCollectionCell alloc] initWithFrame:CGRectMake(0, 0, 90, 200) reuseIdenstifier:cellID];
-    }
+//    if (!cell) {
+//        cell = [[VZPolicCollectionCell alloc] initWithFrame:CGRectMake(0, 0, 90, 200) reuseIdenstifier:cellID];
+//    }
     switch (index) {
         case 0:
             cell.backgroundColor = [UIColor blackColor];

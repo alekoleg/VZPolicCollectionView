@@ -13,7 +13,7 @@ NSString * const VZAppCollectionCellIdentifier = @"VZAppCollectionCellIdentifier
 CGSize const VZAppCollectionCellSize = { 85, 95 };
 
 @interface VZAppCollectionCell ()
-
+@property (nonatomic, strong) UIView *imageHolder;
 @end
 
 @implementation VZAppCollectionCell
@@ -34,16 +34,21 @@ CGSize const VZAppCollectionCellSize = { 85, 95 };
 
 - (void)setupImageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width - 20, self.frame.size.width - 20)];
+        
+        _imageHolder = [[UIView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width - 20, self.frame.size.width - 20)];
+        _imageHolder.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _imageHolder.layer.shadowColor = [UIColor grayColor].CGColor;
+        _imageHolder.layer.shadowOffset = CGSizeMake(0, 1);
+        _imageHolder.layer.shadowRadius = 1.0;
+        _imageHolder.layer.shadowOpacity = 0.7;
+        [self addSubview:_imageHolder];
+        
+        _imageView = [[UIImageView alloc] initWithFrame:_imageHolder.bounds];
         _imageView.layer.masksToBounds = YES;
-        _imageView.layer.cornerRadius = 10.0;
-        _imageView.layer.shadowColor = [UIColor grayColor].CGColor;
-        _imageView.layer.shadowOffset = CGSizeMake(0, 1);
-        _imageView.layer.shadowRadius = 1.0;
-        _imageView.layer.shadowOpacity = 0.7;
+        _imageView.layer.cornerRadius = 12.0;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self addSubview:_imageView];
+        [_imageHolder addSubview:_imageView];
     }
 }
 

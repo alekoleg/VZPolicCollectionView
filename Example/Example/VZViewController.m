@@ -9,6 +9,7 @@
 #import "VZViewController.h"
 #import "VZPolicCollectionCell.h"
 #import "VZPolicCollectionView.h"
+#import "VZAppCollectionCell.h"
 
 @interface VZViewController () <VZPolicCollectionViewDelegate>
 
@@ -22,11 +23,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    VZPolicCollectionView *view = [[VZPolicCollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(self.view.bounds) - 100, self.view.frame.size.width, 200)];
+    VZPolicCollectionView *view = [[VZPolicCollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMidY(self.view.bounds) - 100, self.view.frame.size.width, VZAppCollectionCellSize.height)];
+    view.centerContent = YES;
     view.delegate = self;
-    view.sectionWidth = 100;
-    UINib *nib = [UINib nibWithNibName:@"VZTestNibView" bundle:nil];
-    [view registerNib:nib forIndentifier:@"cellID"];
+    view.sectionWidth = VZAppCollectionCellSize.width;
+//    UINib *nib = [UINib nibWithNibName:@"VZTestNibView" bundle:nil];
+//    [view registerNib:nib forIndentifier:@"cellID"];
+
     [view reloadData];
     [self.view addSubview:view];
     
@@ -35,32 +38,38 @@
 
 
 - (NSInteger)numberOfSectionInPolicCollectionView:(VZPolicCollectionView *)view {
-    return 5;
+    return 2;
 }
 
 - (VZPolicCollectionCell *)policCollectionView:(VZPolicCollectionView *)view cellAtIndex:(NSInteger)index {
     
     NSString * const cellID = @"cellID";
     
-    VZPolicCollectionCell *cell = [view dequeCellWithIdentifier:cellID];
+    VZAppCollectionCell *cell = [view dequeCellWithIdentifier:VZAppCollectionCellIdentifier];
+    
+    if (!cell) {
+        cell = [[VZAppCollectionCell alloc] initWithDefaultSizes];
+    }
+    
+    cell.textLabel.text = @"Text";
 //    if (!cell) {
 //        cell = [[VZPolicCollectionCell alloc] initWithFrame:CGRectMake(0, 0, 90, 200) reuseIdenstifier:cellID];
 //    }
     switch (index) {
         case 0:
-            cell.backgroundColor = [UIColor blackColor];
+            cell.imageView.backgroundColor = [UIColor blackColor];
             break;
         case 1:
-            cell.backgroundColor = [UIColor redColor];
+            cell.imageView.backgroundColor = [UIColor redColor];
             break;
         case 2:
-            cell.backgroundColor = [UIColor blueColor];
+            cell.imageView.backgroundColor = [UIColor blueColor];
             break;
         case 3:
-            cell.backgroundColor = [UIColor greenColor];
+            cell.imageView.backgroundColor = [UIColor greenColor];
             break;
         case 4:
-            cell.backgroundColor = [UIColor grayColor];
+            cell.imageView.backgroundColor = [UIColor grayColor];
             break;
             
         default:

@@ -153,6 +153,10 @@
     return innerCell;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self updateCellAfterReload:YES];
+}
 
 #pragma mark - ScrollViewDelegate -
 

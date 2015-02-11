@@ -117,7 +117,7 @@
 
 - (NSArray *)visibleIndexs {
     int min_index = floor(_scrollView.contentOffset.x / _sectionWidth);
-    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.contentSize.width) / _sectionWidth);
+    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.frame.size.width) / _sectionWidth);
     
     NSMutableArray *visibleIndexs = [NSMutableArray array];
     for (int i = min_index; i <= max_index; i++) {

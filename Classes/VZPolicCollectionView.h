@@ -27,6 +27,8 @@
 ///ширина полисов
 /// @defualt = 150
 @property (nonatomic, assign) CGFloat sectionWidth;
+//расстояние межде ячеками
+/// @defualt = 0
 @property (nonatomic, assign) CGFloat distanceBetweenCell;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 

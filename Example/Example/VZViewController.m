@@ -27,6 +27,8 @@
     view.centerContent = YES;
     view.delegate = self;
     view.sectionWidth = 200;
+    view.distanceBetweenCell = 15;
+//    view.scrollView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
 //    UINib *nib = [UINib nibWithNibName:@"VZTestNibView" bundle:nil];
 //    [view registerNib:nib forIndentifier:@"cellID"];
 
@@ -38,7 +40,7 @@
 
 
 - (NSInteger)numberOfSectionInPolicCollectionView:(VZPolicCollectionView *)view {
-    return 30;
+    return 1;
 }
 
 - (VZPolicCollectionCell *)policCollectionView:(VZPolicCollectionView *)view cellAtIndex:(NSInteger)index {

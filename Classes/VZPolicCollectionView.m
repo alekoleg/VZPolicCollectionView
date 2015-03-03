@@ -46,7 +46,7 @@
     _nibMap = [NSMutableDictionary dictionary];
     _visibleCells = [NSMutableSet set];
     _sectionWidth = 150;
-    _distanceBetweenCell = 20;
+    _distanceBetweenCell = 0;
     self.centerContent = NO;
     [self setupScrollView];
 }
@@ -121,7 +121,8 @@
 
 - (NSArray *)visibleIndexs {
     int min_index = floor(_scrollView.contentOffset.x / [self cellWidth]);
-    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.contentSize.width) / [self cellWidth]);
+    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.frame.size.width) / [self cellWidth]);
+
     
     NSMutableArray *visibleIndexs = [NSMutableArray array];
     for (int i = min_index; i <= max_index; i++) {
@@ -131,10 +132,15 @@
 }
 
 - (void)updateScrollViewContentSize {
-    _scrollView.contentSize = CGSizeMake(_countOfCells * [self cellWidth], _scrollView.contentSize.height);
-    float offsetX = (_scrollView.frame.size.width - _scrollView.contentSize.width) / 2 ;
-    offsetX = MAX(offsetX, 0);
-    _scrollView.contentInset = UIEdgeInsetsMake(0, offsetX * _centerContent, 0, 0);
+    _scrollView.contentSize = CGSizeMake(_countOfCells * [self cellWidth] - _distanceBetweenCell, _scrollView.contentSize.height);
+    
+    if (_centerContent) {
+        float offsetX = (_scrollView.frame.size.width - _scrollView.contentSize.width) / 2 ;
+        offsetX = MAX(offsetX, 0);
+        UIEdgeInsets insets = _scrollView.contentInset;
+        insets.left = offsetX;
+        _scrollView.contentInset = insets;
+    }
 }
 
 - (void)addCellForReuse:(VZPolicCollectionCell *)cell {
@@ -157,6 +163,10 @@
     return innerCell;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self updateCellAfterReload:YES];
+}
 
 #pragma mark - ScrollViewDelegate -
 

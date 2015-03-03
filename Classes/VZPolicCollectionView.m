@@ -155,7 +155,7 @@
 - (VZPolicCollectionCell *)cellWithIndex:(NSInteger)index {
     VZPolicCollectionCell *innerCell = nil;
     for (VZPolicCollectionCell *view in _scrollView.subviews) {
-        if (view.tag == index) {
+        if (view.tag == index && [view isKindOfClass:[VZPolicCollectionCell class]]) {
             innerCell = view;
             break;
         }

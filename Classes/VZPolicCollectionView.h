@@ -27,6 +27,9 @@
 ///ширина полисов
 /// @defualt = 150
 @property (nonatomic, assign) CGFloat sectionWidth;
+@property (nonatomic, assign) CGFloat distanceBetweenCell;
+@property (nonatomic, readonly) UIScrollView *scrollView;
+
 @property (nonatomic, assign, getter = isCenterContent) BOOL centerContent;
 
 - (void)reloadData;

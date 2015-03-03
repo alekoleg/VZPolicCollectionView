@@ -16,7 +16,6 @@
     NSMutableDictionary *_nibMap;
 }
 
-@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 
@@ -47,6 +46,7 @@
     _nibMap = [NSMutableDictionary dictionary];
     _visibleCells = [NSMutableSet set];
     _sectionWidth = 150;
+    _distanceBetweenCell = 20;
     self.centerContent = NO;
     [self setupScrollView];
 }
@@ -112,12 +112,16 @@
 #pragma mark - Helpers -
 
 - (CGFloat)xOriginForIntex:(NSInteger)index {
-    return _sectionWidth * index;
+    return [self cellWidth] * index;
+}
+
+- (CGFloat)cellWidth {
+    return _sectionWidth + _distanceBetweenCell;
 }
 
 - (NSArray *)visibleIndexs {
-    int min_index = floor(_scrollView.contentOffset.x / _sectionWidth);
-    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.contentSize.width) / _sectionWidth);
+    int min_index = floor(_scrollView.contentOffset.x / [self cellWidth]);
+    int max_index = ceil((_scrollView.contentOffset.x + _scrollView.contentSize.width) / [self cellWidth]);
     
     NSMutableArray *visibleIndexs = [NSMutableArray array];
     for (int i = min_index; i <= max_index; i++) {
@@ -127,7 +131,7 @@
 }
 
 - (void)updateScrollViewContentSize {
-    _scrollView.contentSize = CGSizeMake(_countOfCells * _sectionWidth, _scrollView.contentSize.height);
+    _scrollView.contentSize = CGSizeMake(_countOfCells * [self cellWidth], _scrollView.contentSize.height);
     float offsetX = (_scrollView.frame.size.width - _scrollView.contentSize.width) / 2 ;
     offsetX = MAX(offsetX, 0);
     _scrollView.contentInset = UIEdgeInsetsMake(0, offsetX * _centerContent, 0, 0);

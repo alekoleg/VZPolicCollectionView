@@ -215,7 +215,7 @@
     }
     
     [_scrollView.subviews enumerateObjectsUsingBlock:^(VZPolicCollectionCell * obj, NSUInteger idx, BOOL *stop) {
-        if (![_visibleCells containsObject:obj]) {
+        if (![_visibleCells containsObject:obj] && [obj isKindOfClass:[VZPolicCollectionCell class]]) {
             [obj removeFromSuperview];
             [self addCellForReuse:obj];
         }

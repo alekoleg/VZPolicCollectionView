@@ -57,7 +57,6 @@
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _scrollView.alwaysBounceHorizontal = YES;
         [self addSubview:_scrollView];
     }
@@ -165,6 +164,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.scrollView.frame = self.bounds;
     [self updateCellAfterReload:YES];
 }
 

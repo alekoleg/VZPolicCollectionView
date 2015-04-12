@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "VZPolicCollectionView"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Horizontal UITableView"
   s.description  = "Horizontal UITableView custom implementation"
   s.homepage     = "https://github.com/alekoleg/VZPolicCollectionView"

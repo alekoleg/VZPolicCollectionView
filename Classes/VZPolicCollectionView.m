@@ -121,7 +121,7 @@
 - (NSArray *)visibleIndexs {
     int min_index = floor(_scrollView.contentOffset.x / [self cellWidth]);
     int max_index = ceil((_scrollView.contentOffset.x + _scrollView.frame.size.width) / [self cellWidth]);
-
+    
     
     NSMutableArray *visibleIndexs = [NSMutableArray array];
     for (int i = min_index; i <= max_index; i++) {
@@ -197,7 +197,9 @@
                     [cell addGestureRecognizer:tap];
                 }
                 [_visibleCells addObject:cell];
-                [_scrollView addSubview:cell];
+                if (![self.scrollView.subviews containsObject:cell]) {
+                    [_scrollView addSubview:cell];
+                }
             };
             
             if (!cell) {
@@ -205,7 +207,6 @@
             } else {
                 if (reload) {
                     [self addCellForReuse:cell];
-                    [cell removeFromSuperview];
                     setupCell();
                 } else {
                     [_visibleCells addObject:cell];

@@ -33,6 +33,7 @@
 @property (nonatomic, readonly) UIScrollView *scrollView;
 
 @property (nonatomic, assign, getter = isCenterContent) BOOL centerContent;
+@property (nonatomic, assign) BOOL enablePerformanceOptimization;
 
 - (void)reloadData;
 - (id)dequeCellWithIdentifier:(NSString *)identifier;

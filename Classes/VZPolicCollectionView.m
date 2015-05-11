@@ -198,7 +198,14 @@
                 }
                 [_visibleCells addObject:cell];
                 if (![self.scrollView.subviews containsObject:cell]) {
-                    [_scrollView addSubview:cell];
+                    //возникают лаги при переиспользовании VZPolicCollectionView, если часто меняется лайаут
+                    if (self.enablePerformanceOptimization) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [_scrollView addSubview:cell];
+                        });
+                    } else {
+                        [_scrollView addSubview:cell];
+                    }
                 }
             };
             

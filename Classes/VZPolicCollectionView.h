@@ -35,6 +35,9 @@
 @property (nonatomic, assign, getter = isCenterContent) BOOL centerContent;
 @property (nonatomic, assign) BOOL enablePerformanceOptimization;
 
+//indexes
+@property (nonatomic, strong) NSNumber *selectedIndex;
+
 - (void)reloadData;
 - (id)dequeCellWithIdentifier:(NSString *)identifier;
 

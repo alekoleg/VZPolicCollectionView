@@ -16,6 +16,8 @@ extern NSString * const VZPolicCollectionCellIdentifier;
 
 - (id)initWithFrame:(CGRect)frame reuseIdenstifier:(NSString *)identifier;
 
+//layout 
 - (void)prepareForReuse;
+- (void)setSelected:(BOOL)selected;
 
 @end

@@ -30,4 +30,9 @@ NSString * const VZPolicCollectionCellIdentifier = @"VZPolicCollectionCellIdenti
     
 }
 
+- (void)setSelected:(BOOL)selected {
+    
+}
+
+
 @end

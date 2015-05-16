@@ -168,6 +168,13 @@
     [self updateCellAfterReload:YES];
 }
 
+#pragma mark - Indexes -
+
+- (void)setSelectedIndex:(NSNumber *)selectedIndex {
+    _selectedIndex = selectedIndex;
+    [self updateCellAfterReload:NO];
+}
+
 #pragma mark - ScrollViewDelegate -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -219,6 +226,9 @@
                     [_visibleCells addObject:cell];
                 }
             }
+            
+            //index
+            [cell setSelected:[self.selectedIndex isEqualToNumber:idx]];
         }
     }
     

@@ -35,12 +35,16 @@
     [view reloadData];
     [self.view addSubview:view];
     
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [view scrollToIndex:@3 animated:YES];
+    });
 
 }
 
 
 - (NSInteger)numberOfSectionInPolicCollectionView:(VZPolicCollectionView *)view {
-    return 1;
+    return 5;
 }
 
 - (VZPolicCollectionCell *)policCollectionView:(VZPolicCollectionView *)view cellAtIndex:(NSInteger)index {

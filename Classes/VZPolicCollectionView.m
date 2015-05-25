@@ -175,6 +175,26 @@
     [self updateCellAfterReload:NO];
 }
 
+- (void)scrollToIndex:(NSNumber *)index {
+    [self scrollToIndex:index animated:NO];
+}
+
+- (void)scrollToIndex:(NSNumber *)index animated:(BOOL)animated {
+    
+    CGFloat fullSection = self.sectionWidth + self.distanceBetweenCell;
+    CGFloat cellX = fullSection * index.floatValue;
+    if ((self.scrollView.contentSize.width - cellX) < self.scrollView.frame.size.width ) {
+        cellX = self.scrollView.contentSize.width - fullSection;
+    }
+    [self.scrollView setContentOffset:CGPointMake(cellX, 0) animated:animated];
+}
+
+- (void)scrollToSelectedIndexAnimated:(BOOL)animated {
+    if (self.selectedIndex) {
+        [self scrollToIndex:self.selectedIndex animated:YES];
+    }
+}
+
 #pragma mark - ScrollViewDelegate -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

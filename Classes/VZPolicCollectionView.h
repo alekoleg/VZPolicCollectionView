@@ -33,16 +33,33 @@
 @property (nonatomic, readonly) UIScrollView *scrollView;
 
 @property (nonatomic, assign, getter = isCenterContent) BOOL centerContent;
+/**
+ *   Subviews adds with dispatch_async
+ */
 @property (nonatomic, assign) BOOL enablePerformanceOptimization;
 
 //indexes
 @property (nonatomic, strong) NSNumber *selectedIndex;
 
+
+/**
+ *   Scroll to index
+ */
+- (void)scrollToIndex:(NSNumber *)index;
+- (void)scrollToIndex:(NSNumber *)index animated:(BOOL)animated;
+- (void)scrollToSelectedIndexAnimated:(BOOL)animated;
+- (void)scrollToRightAnimated:(BOOL)animated;
+
+/**
+ *   Data source
+ */
 - (void)reloadData;
 - (id)dequeCellWithIdentifier:(NSString *)identifier;
 
-- (void)scrollToRightAnimated:(BOOL)animated;
 
+/**
+ *   Nib
+ */
 - (void)registerNib:(UINib *)nib forIndentifier:(NSString *)identifier;
 - (void)registerClass:(NSString *)className forIndentifier:(NSString *)identifier;
 

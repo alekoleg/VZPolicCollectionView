@@ -184,9 +184,12 @@
     CGFloat fullSection = self.sectionWidth + self.distanceBetweenCell;
     CGFloat cellX = fullSection * index.floatValue;
     if ((self.scrollView.contentSize.width - cellX) < self.scrollView.frame.size.width ) {
-        cellX = self.scrollView.contentSize.width - fullSection;
+        cellX = self.scrollView.contentSize.width - _sectionWidth - self.scrollView.contentInset.right;
+    } else {
+        cellX -= self.scrollView.contentInset.left;
     }
     [self.scrollView setContentOffset:CGPointMake(cellX, 0) animated:animated];
+
 }
 
 - (void)scrollToSelectedIndexAnimated:(BOOL)animated {

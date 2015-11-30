@@ -67,6 +67,7 @@ CGSize const VZAppCollectionCellSize = { 85, 95 };
         _textLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1.0];
         _textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _textLabel.textAlignment = NSTextAlignmentCenter;
+		_textLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:_textLabel];
     }
 }
